@@ -10,7 +10,7 @@ namespace FearGenerator.Models
     }
     public int NotableHumanId {get; set; }
     public string HumanName { get; set; }
-    public string Roll { get; set; }
+    public string Role { get; set; }
     public virtual ICollection<NotableHumansMovies> HumansJoinEntities {get; set;}
   }
 }

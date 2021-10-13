@@ -13,6 +13,13 @@ ul {
   padding: 3% 0 0 0;
 }
 
+.center {
+  width:50%;
+  margin:0 auto;
+  text-align:center;
+  display:inline-block;
+}
+
 h1 {
   font-family: 'Nosifer', cursive;
 }

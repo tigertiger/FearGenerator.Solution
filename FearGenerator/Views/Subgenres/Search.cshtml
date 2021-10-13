@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@using FearGenerator.Models
+@model FearGenerator.Models.Subgenre
+
+<div class="container">
+  <section class="survival">
+    <br />
+    <h2 class="survival">Search for a Subgenre</h3>
+
+    @using (Html.BeginForm())
+    {
+      @Html.LabelFor(model => model.Name)
+      @Html.TextBoxFor(model => model.Name)
+
+      <input type="submit" value="Search"/>
+    }
+  </section>
+</div>

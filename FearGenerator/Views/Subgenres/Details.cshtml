@@ -5,27 +5,27 @@
 @model FearGenerator.Models.Subgenre
 
 <div class="container">
-<span>&nbsp;</span>
-<h3>@Html.DisplayFor(model => model.Name)</h3>
+  <span>&nbsp;</span>
+  <h3>@Html.DisplayFor(model => model.Name)</h3>
 
-@if(@Model.JoinEntities.Count == 0)
-{
-  <p>This subgenre does not contain any movies...yet.</p>
-}
-else
-{
-<ul>
-  @foreach(var join in Model.JoinEntities)
+  @if(@Model.JoinEntities.Count == 0)
   {
-    <li>@Html.ActionLink($"{join.Movie.Title}", "Details", "Movies", new { id = join.Movie.MovieId})</li>
+    <p>This subgenre does not contain any movies...yet.</p>
   }
-</ul>
-}
-<p>@Html.ActionLink("Delete this Subgenre", "Delete", new { id = Model.SubgenreId })</p>
-<p><em>Deleting this subgenre will delete all movies associated with it. Please first remove the subgenre from any movies you want to retain.</em></p>
+  else
+  {
+  <ul>
+    @foreach(var join in Model.JoinEntities)
+    {
+      <li>@Html.ActionLink($"{join.Movie.Title}", "Details", "Movies", new { id = join.Movie.MovieId})</li>
+    }
+  </ul>
+  }
+  <p>@Html.ActionLink("Edit Subgenre", "Edit", new {id = Model.SubgenreId})</p>
+  <p>@Html.ActionLink("Delete this Subgenre", "Delete", new { id = Model.SubgenreId })</p>
 
-<div class="bottomOpts">
-<p>@Html.ActionLink("Add a Movie", "Create", "Movies")</p>
-<p></p>@Html.ActionLink("See All Subgenres", "Index")</p>
-</div>
+  <div class="bottomOpts">
+    <p>@Html.ActionLink("Add a Movie", "Create", "Movies")</p>
+    <p>@Html.ActionLink("See All Subgenres", "Index")</p>
+  </div>
 </div>

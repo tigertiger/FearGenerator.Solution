@@ -9,7 +9,7 @@
 <h1 class="survival bleeding">Edit @Model.Title</h1>
 
 @using (Html.BeginForm())
-
+{
   @Html.HiddenFor(model => model.MovieId)
 
   @Html.LabelFor(model => model.Title)

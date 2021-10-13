@@ -1,0 +1,24 @@
+@{
+  Layout= "_Layout";
+}
+
+@using FearGenerator.Models
+@model FearGenerator.Models.Subgenre
+
+<div class="container">
+  <span>&nbsp;</span>
+  <h1 class="survival bleeding">Edit @Model.Name</h1>
+
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.SubgenreId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)<br/>
+
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)<br />
+
+    <input type="submit" value="Save"/>
+  }
+</div>

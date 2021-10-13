@@ -1,4 +1,4 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
@@ -6,17 +6,17 @@
 @model FearGenerator.Models.Movie
 
 <div class="container">
-<section class="survival">
-<span>&nbsp;</span>
-<h2 class="survival">Search for a Movie</h3>
+  <section class="survival">
+    <span>&nbsp;</span>
+    <h2 class="survival">Search for a Movie</h3>
 
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(model => model.Title)
-  @Html.TextBoxFor(model => model.Title)
+    @using (Html.BeginForm())
+    {
+      @Html.LabelFor(model => model.Title)
+      @Html.TextBoxFor(model => model.Title)
 
-  <input type="submit" value="Search"/>
-}
-</section>
+      <input type="submit" value="Search"/>
+    }
+  </section>
 </div>
- *@
+

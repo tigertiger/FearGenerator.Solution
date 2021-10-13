@@ -25,19 +25,19 @@ namespace FearGenerator.Controllers
 
     public ActionResult Create()
     {
-      // ViewBag.SubgenreId = new SelectList(_db.Subgenres, "SubgenreId", "Name");
+      ViewBag.SubgenreId = new SelectList(_db.Subgenres, "SubgenreId", "Name");
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Movie movie)
+    public ActionResult Create(Movie movie, int SubgenreId)
     {
       _db.Movies.Add(movie);
-      // _db.SaveChanges();
-      // if(SubgenreId != 0)
-      // {
-      //   _db.MoviesSubgenres.Add(new MoviesSubgenres() {SubgenreId = SubgenreId, MovieId = movie.MovieId});
-      // }
+      _db.SaveChanges();
+      if(SubgenreId != 0)
+      {
+        _db.MoviesSubgenres.Add(new MoviesSubgenres() {SubgenreId = SubgenreId, MovieId = movie.MovieId});
+      }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

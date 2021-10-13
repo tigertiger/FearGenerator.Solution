@@ -16,6 +16,10 @@ namespace FearGenerator.Controllers
       _db = db;
     }
 
-    
+    public ActionResult Index()
+    {
+      List<NotableHuman> model = _db.NotableHuman.ToList();
+      return View(model);
+    }
   }
 }

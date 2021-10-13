@@ -6,12 +6,12 @@ namespace FearGenerator.Models
   {
     public Subgenre()
     {
-      this.Movies = new HashSet<Movie>();
+      this.JoinEntities = new HashSet<MoviesSubgenres>();
     }
 
     public int SubgenreId {get; set;}
     public string Name {get; set;}
     public string Description { get; set;}
-    public virtual ICollection<Movie> Movies { get; set;}
+    public virtual ICollection<MoviesSubgenres> JoinEntities { get; set;}
   }
 }

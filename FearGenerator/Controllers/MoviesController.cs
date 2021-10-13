@@ -19,13 +19,13 @@ namespace FearGenerator.Controllers
 
     public ActionResult Index()
     {
-      List<Movie> model = _db.Movies.Include(movie => movie.Subgenre).ToList();
+      List<Movie> model = _db.Movies.ToList();
       return View(model);
     }
 
     public ActionResult Create()
     {
-      ViewBag.SubgenreId = new SelectList(_db.Subgenres, "SubgenreId", "Name");
+      // ViewBag.SubgenreId = new SelectList(_db.Subgenres, "SubgenreId", "Name");
       return View();
     }
 
@@ -33,13 +33,21 @@ namespace FearGenerator.Controllers
     public ActionResult Create(Movie movie)
     {
       _db.Movies.Add(movie);
+      // _db.SaveChanges();
+      // if(SubgenreId != 0)
+      // {
+      //   _db.MoviesSubgenres.Add(new MoviesSubgenres() {SubgenreId = SubgenreId, MovieId = movie.MovieId});
+      // }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      Movie thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      Movie thisMovie = _db.Movies
+        .Include(movie => movie.JoinEntities)
+        .ThenInclude(join => join.Subgenre)
+        .FirstOrDefault(movie => movie.MovieId == id);
       return View(thisMovie);
     }
 
@@ -60,15 +68,61 @@ namespace FearGenerator.Controllers
     {
       Movie thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
       ViewBag.SubgenreId = new SelectList(_db.Subgenres, "SubgenreId", "Name");
-      return  View(thisMovie);
+      return View(thisMovie);
     }
 
     [HttpPost]
-    public ActionResult Edit(Movie movie)
+    public ActionResult Edit(Movie movie, int SubgenreId)
     {
+      if (SubgenreId !=0)
+      {
+        _db.MoviesSubgenres.Add(new MoviesSubgenres() {SubgenreId = SubgenreId, MovieId = movie.MovieId});
+      }
       _db.Entry(movie).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Details", new { id = movie.MovieId});
+    }
+
+    public ActionResult AddSubgenre(int id)
+    {
+      Movie thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      ViewBag.SubgenreId = new SelectList(_db.Subgenres, "SubgenreId", "Name");
+      return View(thisMovie);
+    }
+
+    [HttpPost]
+    public ActionResult AddSubgenre(Movie movie, int SubgenreId)
+    {
+      if (SubgenreId != 0)
+      {
+        _db.MoviesSubgenres.Add(new MoviesSubgenres() {SubgenreId = SubgenreId, MovieId = movie.MovieId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Movie thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      return View(thisMovie);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult Destroy(int id)
+    {
+      Movie thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+      _db.Movies.Remove(thisMovie);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteSubgenre(int joinId)
+    {
+      var joinEntry = _db.MoviesSubgenres.FirstOrDefault(entry => entry.MoviesSubgenresId == joinId);
+      _db.MoviesSubgenres.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

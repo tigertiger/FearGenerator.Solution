@@ -3,6 +3,7 @@
 }
 @using FearGenerator.Models;
 @model List<FearGenerator.Models.Movie>;
+
 <div class="container">
 <section class="survival">
 <h1 class="survival bleeding">Movies</h1>
@@ -10,10 +11,10 @@
 <ul>
   @foreach(Movie movie in Model)
   {
-    <li>@Html.ActionLink($"{movie.Title}", "Details", new { id = movie.MovieId}) | @Html.ActionLink($"{movie.Subgenre.Name}", "Details", "Subgenres", new {id = movie.SubgenreId})</li>
+    <li>@Html.ActionLink($"{movie.Title}", "Details", new { id = movie.MovieId})</li>
   }
 </ul>
-
+@* | @Html.ActionLink($"{join.Movie.Subgenre.Name}", "Details", "Subgenres", new {id = join.Movie.SubgenreId}) *@
 
 <p>@Html.ActionLink("Search Movies", "Search")</p>
 <p>@Html.ActionLink("Add a Movie", "Create")</p>

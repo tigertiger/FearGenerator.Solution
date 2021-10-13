@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FearGenerator.Models.Subgenre
+
+<div class="container">
+<span>&nbsp;</span>
+<h1 class="survival bleeding">Add a Subgenre</h1>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)<br /><br />
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)
+  <input type="submit" value="Add Subgenre"/>
+}
+
+<div class="bottomOpts">
+<p>@Html.ActionLink("See all Subgenres", "Index")</p>
+<p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+</div>
+
+</div>

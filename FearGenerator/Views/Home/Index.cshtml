@@ -1,0 +1,21 @@
+@{
+  Layout ="_Layout";
+}
+<div class="container">
+<section class="survival">
+<h1 class="survival bleeding">Welcome to your DOOM!</h1>
+<h2>Don't watch these movies. They're too scary! :D</h2>
+</section>
+
+<div class="column2">
+<h3>Update your List</h3>
+<p>@Html.ActionLink("Add a Movie", "Create", "Movies")</p>
+<p>@Html.ActionLink("Add a Subgenre", "Create", "Subgenres")</p>
+</div>
+
+<div class="column2">
+<h3>View your List</h3>
+<p>@Html.ActionLink("See all Subgenres", "Index", "Subgenres")</p>
+<p>@Html.ActionLink("See all Movies", "Index", "Movies")</p>
+</div>
+</div>

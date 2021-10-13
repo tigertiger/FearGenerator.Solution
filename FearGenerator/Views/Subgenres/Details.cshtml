@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+@using FearGenerator.Models
+@model FearGenerator.Models.Subgenre
+
+<div class="container">
+<span>&nbsp;</span>
+<h3>@Html.DisplayFor(model => model.Name)</h3>
+
+<ul>
+  @foreach(Movie movie in Model.Movies)
+  {
+    <li>@Html.ActionLink($"{movie.Title}", "Details", "Movies", new { id = movie.MovieId}) | @movie.Subgenre.Name</li>
+  }
+</ul>
+
+
+<p>@Html.ActionLink("Add a Movie", "Create", "Movies")</p>
+<p></p>@Html.ActionLink("See All Subgenres", "Index")</p>
+</div>

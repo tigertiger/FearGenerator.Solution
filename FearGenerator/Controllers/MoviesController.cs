@@ -19,8 +19,8 @@ namespace FearGenerator.Controllers
 
     public ActionResult Index()
     {
-      List<Movie> model = _db.Movies.ToList();
-      return View(model);
+      List<Movie> sorted = _db.Movies.ToList().OrderBy(movie => movie.Title).ToList();
+      return View(sorted);
     }
 
     public ActionResult Create()

@@ -25,13 +25,12 @@ else
     </ul>
 }
 <p>@Html.ActionLink("Edit Human", "Edit", new{id = Model.HumanId})</p>
-@* <p>@Html.ActionLink("Add a Movie", "AddMovie", new {id = Model.HumanId})</p>
-<p>@Html.ActionLink("Delete this Human", "Delete", new { id = Model.HumanId })</p> *@
+<p>@Html.ActionLink("Delete this Human", "Delete", new { id = Model.HumanId })</p>
 
 
 <div class="bottomOpts">
-<p>@Html.ActionLink("Back to Movies", "Index")</p>
-<p>@Html.ActionLink("See all Humans", "Index", "Humans")</p>
+<p>@Html.ActionLink("Add a Human", "AddHuman", new {id = Model.HumanId})</p>
+<p>@Html.ActionLink("Back to Humans", "Index")</p>
 </div>
 </section>
 </div>

@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FearGenerator.Models.Human
+
+<h2>Are you sure you want to delete this human?</h2>
+
+@Html.DisplayFor(model => model.HumanName)
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+<div class="bottomOpts">
+<p>@Html.ActionLink("Back to Humans", "Index")</p>
+<p>@Html.ActionLink("See all Humans", "Index", "Humans")</p>
+<p>@Html.ActionLink("Edit Human", "Edit", new{id = Model.HumanId})</p>
+</div>

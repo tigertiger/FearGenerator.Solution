@@ -15,21 +15,17 @@
   @Html.LabelFor(model => model.Title)
   @Html.EditorFor(model => model.Title)<br/>
 
-  @Html.LabelFor(model => model.Rating)<br/>
-  @Html.RadioButtonFor(model => model.Rating, "G")<span> G</span><br />
-  @Html.RadioButtonFor(model => model.Rating, "PG")<span> PG</span><br />
-  @Html.RadioButtonFor(model => model.Rating, "PG13")<span> PG13</span><br />
-  @Html.RadioButtonFor(model => model.Rating, "R")<span> R</span><br />
-  @Html.RadioButtonFor(model => model.Rating, "Unrated")<span> Unrated</span><br />
+  @Html.Label("Your Rating")<br/>
+  @Html.RadioButtonFor(model => model.Stars, 1)<span> 1 Star</span><br />
+  @Html.RadioButtonFor(model => model.Stars, 2)<span> 2 Stars</span><br />
+  @Html.RadioButtonFor(model => model.Stars, 3)<span> 3 Stars</span><br />
+  @Html.RadioButtonFor(model => model.Stars, 4)<span> 4 Stars</span><br />
+  @Html.RadioButtonFor(model => model.Stars, 5)<span> 5 Stars</span><br /><br />
 
   @Html.LabelFor(model => model.Year)<br />
   @Html.EditorFor(model => model.Year, new { type = "number", min = "1888", step = "1" })<br />
 
-  @Html.LabelFor(model => model.Stars)<br />
-  @Html.EditorFor(model => model.Stars, new { type = "number", min = "1", max = "5", step = "1" })<br />
-
   @Html.DropDownList("SubgenreId")<br />
-  @Html.DropDownList("HumanId")<br/>
 
   <input type="submit" value="Save"/>
 }

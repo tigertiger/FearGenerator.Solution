@@ -19,8 +19,8 @@ namespace FearGenerator.Controllers
 
     public ActionResult Index()
     {
-      List<Human> model = _db.Humans.ToList();
-      return View(model);
+      List<Human> sorted = _db.Humans.ToList().OrderBy(human => human.HumanName).ToList();
+      return View(sorted);
     }
 
     public ActionResult Create()
@@ -68,6 +68,21 @@ namespace FearGenerator.Controllers
       _db.Entry(human).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Details", new {id = human.HumanId});
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Human thisHuman = _db.Humans.FirstOrDefault(human => human.HumanId == id);
+      return View(thisHuman);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult Destroy(int id)
+    {
+      Human thisHuman = _db.Humans.FirstOrDefault(human => human.HumanId == id);
+      _db.Humans.Remove(thisHuman);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

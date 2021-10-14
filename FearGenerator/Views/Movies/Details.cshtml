@@ -7,9 +7,8 @@
 <section class=survival>
 <h1 class="survival bleeding">@Model.Title</h1>
 <span>&nbsp;</span><br />
-@Html.DisplayNameFor(model => model.Rating): @Html.DisplayFor(model => model.Rating)<br />
-@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)<br />
 @Html.DisplayNameFor(model => model.Stars): @Html.DisplayFor(model => model.Stars)<br />
+@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)<br />
 @if(@Model.JoinEntities.Count == 0)
 {
   <p>This movie has not been assigned any subgenres...yet.</p>

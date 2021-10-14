@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+@using FearGenerator.Models
+@model FearGenerator.Models.Human
+<section class=survival>
+<h1 class="survival bleeding">@Model.HumanName</h1>
+<span>&nbsp;</span><br />
+@Html.DisplayNameFor(model => model.Role): @Html.DisplayFor(model => model.Role)<br />
+@Html.DisplayNameFor(model => model.Notes): @Html.DisplayFor(model => model.Notes)<br />
+
+@if(@Model.HumansJoinEntities.Count == 0)
+{
+  <p>This person is not associated with any films.</p>
+}
+else
+{
+  <p>Associated Films:</p>
+  <ul>
+    @foreach(var join in Model.HumansJoinEntities)
+    {
+      <li>@join.Movie.Title</li>
+    }
+    </ul>
+}
+<p>@Html.ActionLink("Edit Human", "Edit", new{id = Model.HumanId})</p>
+@* <p>@Html.ActionLink("Add a Movie", "AddMovie", new {id = Model.HumanId})</p>
+<p>@Html.ActionLink("Delete this Human", "Delete", new { id = Model.HumanId })</p> *@
+
+
+<div class="bottomOpts">
+<p>@Html.ActionLink("Back to Movies", "Index")</p>
+<p>@Html.ActionLink("See all Humans", "Index", "Humans")</p>
+</div>
+</section>
+</div>

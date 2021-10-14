@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@using FearGenerator.Models
+@model FearGenerator.Models.Human
+
+<div class="container">
+  <span>&nbsp;</span>
+  <section class=survival>
+      <h1 class="survival bleeding">Add a Notable Person</h1>
+      <h4>Director, Editor, Actor, Scream Queen, whathaveyou...</h4>
+  </section>
+
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(model => model.HumanName)
+    @Html.TextBoxFor(model => model.HumanName)<br />
+
+    @Html.LabelFor(model => model.Role)
+    @Html.TextBoxFor(model => model.Role)<br />
+
+    @Html.Label("Associated Movies")
+    @Html.DropDownList("MovieId")<br />
+    <p><em>Sorry, you have to add them one at a time, because stupid</em></p>
+
+    @Html.LabelFor(model => model.Notes)
+    @Html.TextBoxFor(model => model.Notes)<br />
+
+    <input type="submit" value="Add Person" />
+  }
+</div>

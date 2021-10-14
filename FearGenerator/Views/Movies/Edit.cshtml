@@ -29,6 +29,7 @@
   @Html.EditorFor(model => model.Stars, new { type = "number", min = "1", max = "5", step = "1" })<br />
 
   @Html.DropDownList("SubgenreId")<br />
+  @Html.DropDownList("HumanId")<br/>
 
   <input type="submit" value="Save"/>
 }

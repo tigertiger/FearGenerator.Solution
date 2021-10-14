@@ -7,8 +7,8 @@ namespace FearGenerator.Models
     public DbSet<Subgenre> Subgenres { get; set; }
     public DbSet<Movie> Movies { get; set; }
     public DbSet<MoviesSubgenres> MoviesSubgenres {get; set;}
-    public DbSet<NotableHuman> NotableHuman {get; set;}
-    public DbSet<NotableHumansMovies> NotableHumansMovies {get; set;}
+    public DbSet<Human> Humans {get; set;}
+    public DbSet<HumansMovies> HumansMovies {get; set;}
 
     public FearGeneratorContext(DbContextOptions options) : base(options) { }
 

@@ -1,0 +1,30 @@
+@{
+  Layout= "_Layout";
+}
+
+@using FearGenerator.Models
+@model FearGenerator.Models.Human
+<div class="container">
+<span>&nbsp;</span>
+<h1 class="survival bleeding">Edit @Model.HumanName</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.HumanId)
+
+  @Html.Label("Name")<br />
+  @Html.EditorFor(model => model.HumanName)<br/>
+  <br />
+  @Html.LabelFor(model => model.Role)<br />
+  @Html.EditorFor(model => model.Role)<br />
+  <br />
+  @Html.LabelFor(model => model.Notes)<br />
+  @Html.EditorFor(model => model.Notes)<br />
+  <br />
+  @Html.Label("Associated Movies")<br />
+  @Html.DropDownList("MovieId")<br />
+  <p><em>Sorry, you have to add them one at a time, because stupid</em></p>
+
+  <input type="submit" value="Save"/>
+}
+</div>

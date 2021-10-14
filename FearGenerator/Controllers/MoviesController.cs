@@ -91,9 +91,14 @@ namespace FearGenerator.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddSubgenre(Movie movie, int SubgenreId)
+    public ActionResult AddSubgenre(Movie movie, int SubgenreId, Subgenre subgenre, int MovieId)
     {
-      if (SubgenreId != 0)
+      // if (SubgenreId != 0 && _db.MoviesSubgenres.Any(model => model.SubgenreId == subgenre.SubgenreId && model.MovieId == MovieId))
+      // {
+      //   ViewBag.ErrorMessage = "This genre is already assigned to this movie";
+      //   return View();
+      // }
+      if (SubgenreId != 0 && !_db.MoviesSubgenres.Any(model => model.SubgenreId == subgenre.SubgenreId && model.MovieId == MovieId))
       {
         _db.MoviesSubgenres.Add(new MoviesSubgenres() {SubgenreId = SubgenreId, MovieId = movie.MovieId});
       }
